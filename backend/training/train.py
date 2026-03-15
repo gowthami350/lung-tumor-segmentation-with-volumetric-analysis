@@ -7,17 +7,19 @@ from tqdm import tqdm
 import segmentation_models_pytorch as smp
 import numpy as np
 
-
+# =========================================================
+# CONFIG
+# =========================================================
 DATA_ROOT = "data/raw"
 SAVE_DIR = "models/segmentation_multiclass/weights"
 
 IMAGE_SIZE = 256
-BATCH_SIZE = 4  
+BATCH_SIZE = 4  # Reduced from 8
 MAX_EPOCHS = 120
 PATIENCE = 10
 LR = 1e-4
 
-RESUME = True  
+RESUME = True   # set False for fresh training
 
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 os.makedirs(SAVE_DIR, exist_ok=True)

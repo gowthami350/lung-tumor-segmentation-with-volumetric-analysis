@@ -17,38 +17,26 @@ venv/
 .env.*
 
 #################################
-# NNUNET DATA (CRITICAL)
+# EXCLUDE UNNECESSARY FILES
 #################################
-# Raw dataset - exclude data but keep structure
+backend/src/
+PROJECT_DETAILS.md
 
-frontend/
-backend/data/raw/*
-!backend/data/raw/
-!backend/data/raw/train/
-!backend/data/raw/test/
-!backend/data/raw/train/CT/
-!backend/data/raw/train/MASK/
-!backend/data/raw/test/CT/
-!backend/data/raw/test/MASK/
-!backend/data/raw/train/CT/ADC/
-!backend/data/raw/train/CT/LCC/
-!backend/data/raw/train/CT/SCC/
-!backend/data/raw/train/MASK/ADC/
-!backend/data/raw/train/MASK/LCC/
-!backend/data/raw/train/MASK/SCC/
-!backend/data/raw/test/CT/ADC/
-!backend/data/raw/test/CT/LCC/
-!backend/data/raw/test/CT/SCC/
-!backend/data/raw/test/MASK/ADC/
-!backend/data/raw/test/MASK/LCC/
-!backend/data/raw/test/MASK/SCC/
+#################################
+# EXCLUDE ALL MODELS AND DATASETS
+#################################
+backend/checkpoints/
+backend/models/
+backend/data/
 
-# nnU-Net generated folders
-backend/data/nnunet/nnUNet_raw/
-backend/data/nnunet/nnUNet_preprocessed/
-backend/data/nnunet/nnUNet_results/
+# Model files
+*.pth
+*.pt
+*.pkl
+*.h5
+*.ckpt
 
-# All dataset files
+# Dataset files (images)
 *.nii.gz
 *.nii
 *.dcm
@@ -57,21 +45,18 @@ backend/data/nnunet/nnUNet_results/
 *.jpeg
 
 #################################
-# TRAINING OUTPUTS
+# INCLUDE ONLY TRAINING CODE
 #################################
-# Model files
-backend/src/train_nnunet.py
-backend/src/model_loader.py
+!backend/training/
+!backend/training/**
 
-# Training artifacts
-*.pth
-*.pt
-*.npz
-*.npy
-*.pkl
-*.h5
+#################################
+# EXCLUDE TRAINING ARTIFACTS
+#################################
 *.log
-*.ckpt
+*.tmp
+temp/
+tmp/
 
 #################################
 # FASTAPI / BACKEND
@@ -84,6 +69,7 @@ outputs/
 #################################
 # FRONTEND (REACT / NODE)
 #################################
+frontend/
 node_modules/
 dist/
 build/
@@ -110,5 +96,3 @@ desktop.ini
 # JUPYTER / TEMP
 #################################
 .ipynb_checkpoints/
-temp/
-tmp/
